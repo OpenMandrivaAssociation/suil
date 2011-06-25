@@ -106,6 +106,7 @@ Shared object for Qt4 hosts displaying GTK2 LV2 GUIs
 #-----------------------------------
 
 %prep
+lv2config
 %setup -q
 
 %build

@@ -19,6 +19,8 @@ BuildRequires:  waf, pkgconfig
 BuildRequires:  serd-devel
 BuildRequires:  lv2core-devel >= 0.4
 BuildRequires:  lv2-ui
+BuildRequires:  gtk2-devel
+BuildRequires:  qt4-devel
 
 %description
 Suil is a lightweight C library for loading and wrapping LV2 plugin UIs.
@@ -106,7 +108,6 @@ Shared object for Qt4 hosts displaying GTK2 LV2 GUIs
 #-----------------------------------
 
 %prep
-lv2config
 %setup -q
 
 %build

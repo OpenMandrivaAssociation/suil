@@ -18,7 +18,7 @@ Group:          System/Libraries
 BuildRequires:  waf, pkgconfig
 BuildRequires:  serd-devel
 BuildRequires:  lv2core-devel >= 0.4
-BuildRequires:  lv2-ui
+BuildRequires:  lv2-ui-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  qt4-devel
 

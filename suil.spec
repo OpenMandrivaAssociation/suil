@@ -55,7 +55,6 @@ support that toolkit.
 
 %files -n %{lib_name}
 %doc COPYING README
-%defattr(-,root,root,-)
 %{_libdir}/lib%{name}-%{lib_major}.so.*
 
 #-----------------------------------
@@ -74,6 +73,9 @@ Development files needed to build applications against suil.
 %dir %{_includedir}/%{name}-%{lib_major}/%{name}
 %{_includedir}/%{name}-%{lib_major}/%{name}/*.h
 %{_libdir}/pkgconfig/%{name}-%{lib_major}.pc
+
+%{_libdir}/%{name}-0/libsuil_x11_in_gtk2.so
+%{_libdir}/%{name}-0/libsuil_x11_in_qt4.so
 
 #-----------------------------------
 %package -n %{_lib}%{name}-qt4-in-gtk2

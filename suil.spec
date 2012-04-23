@@ -18,7 +18,7 @@ Group:          System/Libraries
 BuildRequires:  waf, pkgconfig
 BuildRequires:  serd-devel
 BuildRequires:  lv2-ui-devel
-BuildRequires:  gtk+3-devel
+BuildRequires:  gtk2-devel
 BuildRequires:  qt4-devel
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sratom-0)
@@ -70,7 +70,6 @@ Provides:       %{name}-devel = %{version}-%{release}
 Development files needed to build applications against suil.
 
 %files -n %{lib_name_devel}
-%defattr(-,root,root,-)
 %{_libdir}/lib%{name}-%{lib_major}.so
 %dir %{_includedir}/%{name}-%{lib_major}/%{name}
 %{_includedir}/%{name}-%{lib_major}/%{name}/*.h
@@ -88,7 +87,6 @@ Provides:       %{name}-qt4-in-gtk2 = %{version}-%{release}
 Shared object for GTK2 hosts displaying Qt4 LV2 GUIs
 
 %files -n %{_lib}%{name}-qt4-in-gtk2
-%defattr(-,root,root,-)
 %{_libdir}/%{name}-%{lib_major}/lib%{name}_qt4_in_gtk2.so
 
 #-----------------------------------
@@ -103,7 +101,6 @@ Provides:       %{name}-gtk2-in-qt4 = %{version}-%{release}
 Shared object for Qt4 hosts displaying GTK2 LV2 GUIs
 
 %files -n %{_lib}%{name}-gtk2-in-qt4
-%defattr(-,root,root,-)
 %{_libdir}/%{name}-%{lib_major}/lib%{name}_gtk2_in_qt4.so
 
 #-----------------------------------
@@ -120,7 +117,4 @@ Shared object for Qt4 hosts displaying GTK2 LV2 GUIs
 rm -rf %{buildroot}
 
 ./waf install --destdir=%{buildroot}
-
-%clean
-rm -rf %{buildroot}
 

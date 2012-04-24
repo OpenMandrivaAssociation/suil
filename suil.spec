@@ -3,7 +3,7 @@
 
 Name:           suil
 Version:        0.6.0
-Release:        1
+Release:        2
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 
 %define lib_major       0
@@ -17,10 +17,9 @@ Group:          System/Libraries
 
 BuildRequires:  waf, pkgconfig
 BuildRequires:  serd-devel
-BuildRequires:  lv2-ui-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  qt4-devel
-BuildRequires:  pkgconfig(lv2)
+BuildRequires:  lv2-devel
 BuildRequires:  pkgconfig(sratom-0)
 
 %description
@@ -74,14 +73,36 @@ Development files needed to build applications against suil.
 %{_includedir}/%{name}-%{lib_major}/%{name}/*.h
 %{_libdir}/pkgconfig/%{name}-%{lib_major}.pc
 
+#-----------------------------------
+%package -n %{_lib}%{name}-x11-in-gtk2
+Summary:        Shared object for GTK2 hosts displaying X11 LV2 GUIs
+Group:          System/Libraries
+Requires:       %{lib_name} = %{version}-%{release}
+Provides:       %{name}-x11-in-gtk2 = %{version}-%{release}
+
+%description -n %{_lib}%{name}-x11-in-gtk2
+Shared object for GTK2 hosts displaying X11 LV2 GUIs
+
+%files -n %{_lib}%{name}-x11-in-gtk2
 %{_libdir}/%{name}-0/libsuil_x11_in_gtk2.so
+
+#-----------------------------------
+%package -n %{_lib}%{name}-x11-in-qt4
+Summary:        Shared object for Qt4 hosts displaying X11 LV2 GUIs
+Group:          System/Libraries
+Requires:       %{lib_name} = %{version}-%{release}
+Provides:       %{name}-x11-in-qt4 = %{version}-%{release}
+
+%description -n %{_lib}%{name}-x11-in-qt4
+Shared object for Qt4 hosts displaying X11 LV2 GUIs
+
+%files -n %{_lib}%{name}-x11-in-qt4
 %{_libdir}/%{name}-0/libsuil_x11_in_qt4.so
 
 #-----------------------------------
 %package -n %{_lib}%{name}-qt4-in-gtk2
 Summary:        Shared object for GTK2 hosts displaying Qt4 LV2 GUIs
 Group:          System/Libraries
-Requires:       qtgui
 Requires:       %{lib_name} = %{version}-%{release}
 Provides:       %{name}-qt4-in-gtk2 = %{version}-%{release}
 

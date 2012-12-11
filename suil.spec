@@ -2,7 +2,7 @@
 %define debug_package          %{nil}
 
 Name:           suil
-Version:        0.6.4
+Version:        0.6.6
 Release:        1
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 
@@ -137,7 +137,4 @@ Shared object for Qt4 hosts displaying GTK2 LV2 GUIs
 ./waf
 
 %install
-rm -rf %{buildroot}
-
 ./waf install --destdir=%{buildroot}
-

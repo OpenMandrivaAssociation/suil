@@ -2,8 +2,8 @@
 %define debug_package          %{nil}
 
 Name:           suil
-Version:        0.6.10
-Release:        2
+Version:        0.8.2
+Release:        1
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 
 %define lib_major       0
@@ -15,9 +15,9 @@ URL:            http://drobilla.net/software/%{name}/
 License:        MIT-like
 Group:          System/Libraries
 
-BuildRequires:  waf, pkgconfig
+BuildRequires:  pkgconfig
 BuildRequires:  serd-devel
-BuildRequires:  gtk2-devel
+BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  qt4-devel
 BuildRequires:  lv2-devel
 BuildRequires:  pkgconfig(sratom-0)

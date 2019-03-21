@@ -133,9 +133,15 @@ Shared object for Qt4 hosts displaying GTK2 LV2 GUIs
 %setup -q
 
 %build
-./waf configure --prefix=%{_prefix} --libdir=%{_libdir} \
---lv2dir=%{_libdir}/lv2
-./waf
+export CXXFLAGS="%{optflags}"
+export LINKFLAGS="%{ldflags}"
+%{__python2} waf configure \
+    --prefix=%{_prefix} \
+    --libdir=%{_libdir} \
+    --mandir=%{_mandir} \
+    --docdir=%{_docdir}/%{name} \
+    --docs
+%{__python2} waf build -v %{?_smp_mflags}
 
 %install
-./waf install --destdir=%{buildroot}
+%{__python2} waf install --destdir=%{buildroot}

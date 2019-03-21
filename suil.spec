@@ -2,7 +2,7 @@
 %define debug_package          %{nil}
 
 Name:           suil
-Version:        0.8.2
+Version:        0.10.2
 Release:        1
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 
@@ -10,17 +10,18 @@ Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 %define lib_name        %mklibname %{name} %{lib_major}
 %define lib_name_devel  %mklibname %{name} -d
 
-Source0:         http://download.drobilla.net/%{name}-%{version}.tar.bz2
+Source0:        http://download.drobilla.net/%{name}-%{version}.tar.bz2
 URL:            http://drobilla.net/software/%{name}/
 License:        MIT-like
 Group:          System/Libraries
 
 BuildRequires:  pkgconfig
-BuildRequires:  serd-devel
+BuildRequires:  pkgconfig(serd-0)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  qt4-devel
+BuildRequires:  qt5-devel
 BuildRequires:  lv2-devel
 BuildRequires:  pkgconfig(sratom-0)
+BuildRequires:  python2-devel
 
 %description
 Suil is a lightweight C library for loading and wrapping LV2 plugin UIs.

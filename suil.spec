@@ -22,6 +22,7 @@ BuildRequires:	waf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(serd-0)
 BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  qt5-devel
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sratom-0)
@@ -137,15 +138,13 @@ Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
 %autopatch -p1
 
 %build
-export CXXFLAGS="%{optflags}"
-export LINKFLAGS="%{ldflags}"
-%{__python2} waf configure \
-    --prefix=%{_prefix} \
-    --libdir=%{_libdir} \
-    --mandir=%{_mandir} \
-    --docdir=%{_docdir}/%{name} \
-    --docs
-%{__python2} waf build -v %{?_smp_mflags}
+export CXXFLAGS="%{optflags} -std=gnu++11"
+./waf configure \
+	--prefix=%{_prefix} \
+	--libdir=%{_libdir}
+./waf
+
 
 %install
-%{__python2} waf install --destdir=%{buildroot}
+./waf install --destdir=%{buildroot}
+

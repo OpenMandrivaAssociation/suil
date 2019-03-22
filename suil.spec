@@ -11,15 +11,19 @@ Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 %define lib_name_devel  %mklibname %{name} -d
 
 Source0:        http://download.drobilla.net/%{name}-%{version}.tar.bz2
+Patch0:         suil-0.10.0-linking.patch
 URL:            http://drobilla.net/software/%{name}/
 License:        MIT-like
 Group:          System/Libraries
 
+BuildRequires:	doxygen
+BuildRequires:	graphviz
+BuildRequires:	waf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(serd-0)
 BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  qt5-devel
-BuildRequires:  lv2-devel
+BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sratom-0)
 BuildRequires:  python2-devel
 
@@ -88,49 +92,49 @@ Shared object for GTK2 hosts displaying X11 LV2 GUIs
 %{_libdir}/%{name}-0/libsuil_x11_in_gtk2.so
 
 #-----------------------------------
-%package -n %{_lib}%{name}-x11-in-qt4
-Summary:        Shared object for Qt4 hosts displaying X11 LV2 GUIs
-Group:          System/Libraries
-Requires:       %{lib_name} = %{version}-%{release}
-Provides:       %{name}-x11-in-qt4 = %{version}-%{release}
+%package -n %{_lib}%{name}-x11-in-qt5
+Summary:	Shared object for Qt5 hosts displaying X11 LV2 GUIs
+Group:		System/Libraries
+Requires:	%{lib_name} = %{version}-%{release}
+Provides:	%{name}-x11-in-qt5 = %{version}-%{release}
 
-%description -n %{_lib}%{name}-x11-in-qt4
-Shared object for Qt4 hosts displaying X11 LV2 GUIs
+%description -n %{_lib}%{name}-x11-in-qt5
+Shared object for Qt5 hosts displaying X11 LV2 GUIs
 
-%files -n %{_lib}%{name}-x11-in-qt4
-%{_libdir}/%{name}-0/libsuil_x11_in_qt4.so
+%files -n %{_lib}%{name}-x11-in-qt5
+%{_libdir}/%{name}-0/libsuil_x11_in_qt5.so
+#-----------------------------------
+%package -n %{_lib}%{name}-qt5-in-gtk2
+Summary:	Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
+Group:		System/Libraries
+Requires:	%{lib_name} = %{version}-%{release}
+Provides:	%{name}-qt5-in-gtk2 = %{version}-%{release}
+
+%description -n %{_lib}%{name}-qt5-in-gtk2
+Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
+
+%files -n %{_lib}%{name}-qt5-in-gtk2
+%{_libdir}/%{name}-%{lib_major}/lib%{name}_qt5_in_gtk2.so
 
 #-----------------------------------
-%package -n %{_lib}%{name}-qt4-in-gtk2
-Summary:        Shared object for GTK2 hosts displaying Qt4 LV2 GUIs
-Group:          System/Libraries
-Requires:       %{lib_name} = %{version}-%{release}
-Provides:       %{name}-qt4-in-gtk2 = %{version}-%{release}
+%package -n %{_lib}%{name}-gtk2-in-qt5
+Summary:	Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
+Group:		System/Libraries
+Requires:	gtk2
+Requires:	%{lib_name} = %{version}-%{release}
+Provides:	%{name}-gtk2-in-qt5 = %{version}-%{release}
 
-%description -n %{_lib}%{name}-qt4-in-gtk2
-Shared object for GTK2 hosts displaying Qt4 LV2 GUIs
+%description -n %{_lib}%{name}-gtk2-in-qt5
+Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
 
-%files -n %{_lib}%{name}-qt4-in-gtk2
-%{_libdir}/%{name}-%{lib_major}/lib%{name}_qt4_in_gtk2.so
-
-#-----------------------------------
-%package -n %{_lib}%{name}-gtk2-in-qt4
-Summary:        Shared object for Qt4 hosts displaying GTK2 LV2 GUIs
-Group:          System/Libraries
-Requires:       gtk2
-Requires:       %{lib_name} = %{version}-%{release}
-Provides:       %{name}-gtk2-in-qt4 = %{version}-%{release}
-
-%description -n %{_lib}%{name}-gtk2-in-qt4
-Shared object for Qt4 hosts displaying GTK2 LV2 GUIs
-
-%files -n %{_lib}%{name}-gtk2-in-qt4
-%{_libdir}/%{name}-%{lib_major}/lib%{name}_gtk2_in_qt4.so
+%files -n %{_lib}%{name}-gtk2-in-qt5
+%{_libdir}/%{name}-%{lib_major}/lib%{name}_gtk2_in_qt5.so
 
 #-----------------------------------
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 export CXXFLAGS="%{optflags}"

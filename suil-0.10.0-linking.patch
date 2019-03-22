@@ -1,0 +1,11 @@
+--- suil-0.10.0/wscript.0000	2018-04-22 19:00:29.223937605 -0400
++++ suil-0.10.0/wscript	2018-04-22 19:01:43.171405389 -0400
+@@ -190,7 +190,7 @@ def build(bld):
+ 
+     cflags = []
+     lib    = []
+-    modlib = []
++    modlib = ['X11']
+     if bld.env.DEST_OS == 'win32':
+         modlib += ['user32']
+     else:

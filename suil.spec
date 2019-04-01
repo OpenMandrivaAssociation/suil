@@ -138,6 +138,8 @@ Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
 %autopatch -p1
 
 %build
+export CC=gcc
+export CXX=g++
 export CXXFLAGS="%{optflags} -std=gnu++11"
 ./waf configure \
 	--prefix=%{_prefix} \

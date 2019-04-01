@@ -27,6 +27,7 @@ BuildRequires:  qt5-devel
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sratom-0)
 BuildRequires:  python2-devel
+BuildRequires:	gcc-objc++
 
 %description
 Suil is a lightweight C library for loading and wrapping LV2 plugin UIs.

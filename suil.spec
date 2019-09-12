@@ -66,6 +66,7 @@ support that toolkit.
 %files -n %{lib_name}
 %doc COPYING
 %{_libdir}/lib%{name}-%{lib_major}.so.*
+%{_libdir}/suil-0/libsuil_x11.so
 
 #-----------------------------------
 %package -n %{lib_name_devel}
@@ -110,6 +111,19 @@ Shared object for Qt5 hosts displaying X11 LV2 GUIs
 %files -n %{_lib}%{name}-x11-in-qt5
 %{_libdir}/%{name}-0/libsuil_x11_in_qt5.so
 #-----------------------------------
+%package -n %{_lib}%{name}-x11-in-gtk3
+Summary:	Shared object for GTK3 hosts displaying X11 LV2 GUIs
+Group:		System/Libraries
+Requires:	%{lib_name} = %{version}-%{release}
+Provides:	%{name}-x11-in-gtk3 = %{version}-%{release}
+
+%description -n %{_lib}%{name}-x11-in-gtk3
+Shared object for gtk3 hosts displaying X11 LV2 GUIs
+
+%files -n %{_lib}%{name}-x11-in-gtk3
+%{_libdir}/%{name}-0/libsuil_x11_in_gtk3.so
+#-----------------------------------
+
 %package -n %{_lib}%{name}-qt5-in-gtk2
 Summary:	Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
 Group:		System/Libraries
@@ -121,6 +135,31 @@ Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
 
 %files -n %{_lib}%{name}-qt5-in-gtk2
 %{_libdir}/%{name}-%{lib_major}/lib%{name}_qt5_in_gtk2.so
+
+%package -n %{_lib}%{name}-qt5-in-gtk2
+Summary:	Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
+Group:		System/Libraries
+Requires:	%{lib_name} = %{version}-%{release}
+Provides:	%{name}-qt5-in-gtk2 = %{version}-%{release}
+
+%description -n %{_lib}%{name}-qt5-in-gtk2
+Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
+
+%files -n %{_lib}%{name}-qt5-in-gtk2
+%{_libdir}/%{name}-%{lib_major}/lib%{name}_qt5_in_gtk2.so
+
+#-----------------------------------
+%package -n %{_lib}%{name}-qt5-in-gtk3
+Summary:	Shared object for GTK3 hosts displaying Qt5 LV2 GUIs
+Group:		System/Libraries
+Requires:	%{lib_name} = %{version}-%{release}
+Provides:	%{name}-qt5-in-gtk3 = %{version}-%{release}
+
+%description -n %{_lib}%{name}-qt5-in-gtk3
+Shared object for GTK3 hosts displaying Qt5 LV2 GUIs
+
+%files -n %{_lib}%{name}-qt5-in-gtk3
+%{_libdir}/%{name}-%{lib_major}/lib%{name}_qt5_in_gtk3.so
 
 #-----------------------------------
 %package -n %{_lib}%{name}-gtk2-in-qt5
@@ -138,13 +177,25 @@ Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
 
 #-----------------------------------
 
+%package -n %{_lib}%{name}-qt5-in-gtk2
+Summary:	Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
+Group:		System/Libraries
+Requires:	%{lib_name} = %{version}-%{release}
+Provides:	%{name}-qt5-in-gtk2 = %{version}-%{release}
+
+%description -n %{_lib}%{name}-qt5-in-gtk3
+Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
+
+%files -n %{_lib}%{name}-qt5-in-gtk2
+%{_libdir}/%{name}-%{lib_major}/lib%{name}_qt5_in_gtk2.so
+
+#-----------------------------------
+
 %prep
 %setup -q
 %autopatch -p1
 
 %build
-export CC=gcc
-export CXX=g++
 export CXXFLAGS="%{optflags} -std=gnu++11"
 ./waf configure \
 	--prefix=%{_prefix} \

@@ -64,7 +64,7 @@ If Suil supports a particular toolkit, then all hosts that use Suil will
 support that toolkit.
 
 %files -n %{lib_name}
-%doc COPYING README
+%doc COPYING
 %{_libdir}/lib%{name}-%{lib_major}.so.*
 
 #-----------------------------------

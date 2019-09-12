@@ -2,7 +2,7 @@
 %define debug_package          %{nil}
 
 Name:           suil
-Version:        0.10.2
+Version:        0.10.4
 Release:        1
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 
@@ -22,10 +22,16 @@ BuildRequires:	waf
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(serd-0)
 BuildRequires:  pkgconfig(gtk+-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  qt5-devel
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sratom-0)
 BuildRequires:  python2-devel
+BuildRequires:	gcc-objc++
+BuildRequires:	pkgconfig(Qt5Core)
+BuildRequires:	pkgconfig(Qt5Gui)
+BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	qt5-qtbase-devel
 
 %description
 Suil is a lightweight C library for loading and wrapping LV2 plugin UIs.
@@ -58,8 +64,9 @@ If Suil supports a particular toolkit, then all hosts that use Suil will
 support that toolkit.
 
 %files -n %{lib_name}
-%doc COPYING README
+%doc COPYING
 %{_libdir}/lib%{name}-%{lib_major}.so.*
+%{_libdir}/suil-0/libsuil_x11.so
 
 #-----------------------------------
 %package -n %{lib_name_devel}
@@ -104,6 +111,19 @@ Shared object for Qt5 hosts displaying X11 LV2 GUIs
 %files -n %{_lib}%{name}-x11-in-qt5
 %{_libdir}/%{name}-0/libsuil_x11_in_qt5.so
 #-----------------------------------
+%package -n %{_lib}%{name}-x11-in-gtk3
+Summary:	Shared object for GTK3 hosts displaying X11 LV2 GUIs
+Group:		System/Libraries
+Requires:	%{lib_name} = %{version}-%{release}
+Provides:	%{name}-x11-in-gtk3 = %{version}-%{release}
+
+%description -n %{_lib}%{name}-x11-in-gtk3
+Shared object for gtk3 hosts displaying X11 LV2 GUIs
+
+%files -n %{_lib}%{name}-x11-in-gtk3
+%{_libdir}/%{name}-0/libsuil_x11_in_gtk3.so
+#-----------------------------------
+
 %package -n %{_lib}%{name}-qt5-in-gtk2
 Summary:	Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
 Group:		System/Libraries
@@ -115,6 +135,19 @@ Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
 
 %files -n %{_lib}%{name}-qt5-in-gtk2
 %{_libdir}/%{name}-%{lib_major}/lib%{name}_qt5_in_gtk2.so
+
+#-----------------------------------
+%package -n %{_lib}%{name}-qt5-in-gtk3
+Summary:	Shared object for GTK3 hosts displaying Qt5 LV2 GUIs
+Group:		System/Libraries
+Requires:	%{lib_name} = %{version}-%{release}
+Provides:	%{name}-qt5-in-gtk3 = %{version}-%{release}
+
+%description -n %{_lib}%{name}-qt5-in-gtk3
+Shared object for GTK3 hosts displaying Qt5 LV2 GUIs
+
+%files -n %{_lib}%{name}-qt5-in-gtk3
+%{_libdir}/%{name}-%{lib_major}/lib%{name}_qt5_in_gtk3.so
 
 #-----------------------------------
 %package -n %{_lib}%{name}-gtk2-in-qt5
@@ -137,15 +170,13 @@ Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
 %autopatch -p1
 
 %build
-export CXXFLAGS="%{optflags}"
-export LINKFLAGS="%{ldflags}"
-%{__python2} waf configure \
-    --prefix=%{_prefix} \
-    --libdir=%{_libdir} \
-    --mandir=%{_mandir} \
-    --docdir=%{_docdir}/%{name} \
-    --docs
-%{__python2} waf build -v %{?_smp_mflags}
+export CXXFLAGS="%{optflags} -std=gnu++11"
+./waf configure \
+	--prefix=%{_prefix} \
+	--libdir=%{_libdir}
+./waf
+
 
 %install
-%{__python2} waf install --destdir=%{buildroot}
+./waf install --destdir=%{buildroot}
+

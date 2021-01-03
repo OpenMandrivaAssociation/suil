@@ -2,7 +2,7 @@
 %define debug_package          %{nil}
 
 Name:           suil
-Version:        0.10.6
+Version:        0.10.8
 Release:        1
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 

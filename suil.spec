@@ -26,11 +26,12 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  qt5-devel
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sratom-0)
-BuildRequires:  python2-devel
+BuildRequires:  python3-devel
 BuildRequires:	gcc-objc++
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	pkgconfig(Qt5X11Extras)
 BuildRequires:	qt5-qtbase-devel
 
 %description

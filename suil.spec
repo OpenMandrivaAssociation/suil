@@ -44,7 +44,6 @@ support that toolkit.
 
 #-----------------------------------
 %package -n %{lib_name}
-%package -n %{lib_name}
 
 Summary:        Lightweight RDF syntax library
 Group:          System/Libraries
@@ -168,8 +167,7 @@ Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
 %autopatch -p1
 
 %build
-export CXXFLAGS="%{optflags} -std=gnu++11"
-./waf configure \
+CC="%{__cc}" CXX="%{__cxx}" CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./waf configure \
 	--prefix=%{_prefix} \
 	--libdir=%{_libdir}
 ./waf
@@ -177,4 +175,3 @@ export CXXFLAGS="%{optflags} -std=gnu++11"
 
 %install
 ./waf install --destdir=%{buildroot}
-

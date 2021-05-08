@@ -1,6 +1,3 @@
-%define _enable_debug_packages %{nil}
-%define debug_package          %{nil}
-
 Name:           suil
 Version:        0.10.8
 Release:        1

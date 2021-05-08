@@ -1,6 +1,6 @@
 Name:           suil
 Version:        0.10.8
-Release:        3
+Release:        2
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 
 %define lib_major       0
@@ -24,6 +24,7 @@ BuildRequires:  qt5-devel
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sratom-0)
 BuildRequires:  python3-devel
+BuildRequires:  gcc-objc++
 BuildRequires:	pkgconfig(Qt5Core)
 BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5Widgets)
@@ -167,7 +168,8 @@ Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
 %autopatch -p1
 
 %build
-CC="%{__cc}" CXX="%{__cxx}" CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./waf configure \
+export CXXFLAGS="%{optflags} -std=gnu++11"
+./waf configure \
 	--prefix=%{_prefix} \
 	--libdir=%{_libdir}
 ./waf

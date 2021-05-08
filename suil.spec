@@ -1,6 +1,6 @@
 Name:           suil
-Version:        0.10.8
-Release:        3
+Version:        0.10.10
+Release:        1
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 
 %define lib_major       0
@@ -9,7 +9,7 @@ Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 
 Source0:        http://download.drobilla.net/%{name}-%{version}.tar.bz2
 Patch0:         suil-0.10.0-linking.patch
-URL:            http://drobilla.net/software/%{name}/
+URL:            http://drobilla.net/software/suil/
 License:        MIT-like
 Group:          System/Libraries
 

@@ -1,5 +1,5 @@
 Name:           suil
-Version:        0.10.10
+Version:        0.10.12
 Release:        1
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 

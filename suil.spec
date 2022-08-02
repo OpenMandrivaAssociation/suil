@@ -8,7 +8,7 @@ Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 %define lib_name_devel  %mklibname %{name} -d
 
 Source0:        http://download.drobilla.net/%{name}-%{version}.tar.xz
-Patch0:         suil-0.10.0-linking.patch
+#Patch0:         suil-0.10.0-linking.patch
 URL:            http://drobilla.net/software/suil/
 License:        MIT-like
 Group:          System/Libraries

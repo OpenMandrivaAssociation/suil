@@ -170,7 +170,9 @@ Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
 %autopatch -p1
 
 %build
-%meson -Dcocoa=disabled
+%meson  \
+        -Dcocoa=disabled \
+        -Ddocs=disabled
 %meson_build
 
 

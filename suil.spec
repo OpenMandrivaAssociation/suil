@@ -30,7 +30,7 @@ BuildRequires:	pkgconfig(Qt5Gui)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5X11Extras)
 BuildRequires:	qt5-qtbase-devel
-BuiuldRequires: python3dist(sphinx)
+BuildRequires: python3dist(sphinx)
 
 %description
 Suil is a lightweight C library for loading and wrapping LV2 plugin UIs.

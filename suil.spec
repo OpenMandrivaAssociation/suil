@@ -15,7 +15,7 @@ Group:          System/Libraries
 
 BuildRequires:	doxygen
 BuildRequires:	graphviz
-BuildRequires:	waf
+BuildRequires:	meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(serd-0)
 BuildRequires:  pkgconfig(gtk+-2.0)
@@ -167,11 +167,8 @@ Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
 %autopatch -p1
 
 %build
-CC="%{__cc}" CXX="%{__cxx}" CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./waf configure \
-	--prefix=%{_prefix} \
-	--libdir=%{_libdir}
-./waf
-
+%meson
+%meson_build
 
 %install
-./waf install --destdir=%{buildroot}
+%meson_install

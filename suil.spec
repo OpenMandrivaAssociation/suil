@@ -171,6 +171,7 @@ Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
 %autopatch -p1
 
 %build
+export LDFLAGS="%{optflags} -lX11"
 %meson  \
         -Dgtk2=enabled \
         -Dgtk3=enabled \

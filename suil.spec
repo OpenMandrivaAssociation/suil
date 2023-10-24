@@ -168,7 +168,14 @@ Shared object for Qt5 hosts displaying GTK2 LV2 GUIs
 %autopatch -p1
 
 %build
-%meson
+%meson  \
+        -Dgtk2=enabled \
+        -Dgtk3=enabled \
+        -Dqt5=enabled \
+        -Dx11=enabled \
+        -Ddocs=disabled \
+        -Dsinglehtml=disabled \
+        -Dhtml=disabled
 %meson_build
 
 %install

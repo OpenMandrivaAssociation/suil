@@ -123,19 +123,6 @@ Shared object for gtk3 hosts displaying X11 LV2 GUIs
 
 %files -n %{_lib}%{name}-x11-in-gtk3
 %{_libdir}/%{name}-0/libsuil_x11_in_gtk3.so
-#-----------------------------------
-
-%package -n %{_lib}%{name}-qt5-in-gtk2
-Summary:	Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
-Group:		System/Libraries
-Requires:	%{lib_name} = %{version}-%{release}
-Provides:	%{name}-qt5-in-gtk2 = %{version}-%{release}
-
-%description -n %{_lib}%{name}-qt5-in-gtk2
-Shared object for GTK2 hosts displaying Qt5 LV2 GUIs
-
-%files -n %{_lib}%{name}-qt5-in-gtk2
-%{_libdir}/%{name}-%{lib_major}/lib%{name}_qt5_in_gtk2.so
 
 #-----------------------------------
 %package -n %{_lib}%{name}-qt5-in-gtk3

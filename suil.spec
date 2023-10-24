@@ -1,3 +1,5 @@
+%global build_ldflags %{build_ldflags} -Wl,--undefined-version
+
 Name:           suil
 Version:        0.10.20
 Release:        1

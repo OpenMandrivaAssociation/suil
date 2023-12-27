@@ -2,11 +2,12 @@
 
 Name:           suil
 Version:        0.10.20
-Release:        1
+Release:        2
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 
 %define lib_major       0
-%define lib_name        %mklibname %{name} %{lib_major}
+%define lib_name        %mklibname %{name}
+%define oldlib_name        %mklibname %{name} 0
 %define lib_name_devel  %mklibname %{name} -d
 
 Source0:        https://download.drobilla.net/%{name}-%{version}.tar.xz
@@ -51,6 +52,7 @@ support that toolkit.
 
 Summary:        Lightweight RDF syntax library
 Group:          System/Libraries
+%rename %{oldlib_name}
 
 %description -n %{lib_name}
 Suil is a lightweight C library for loading and wrapping LV2 plugin UIs.

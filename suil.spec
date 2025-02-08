@@ -139,7 +139,7 @@ Provides:	%{name}-x11-in-qt6 = %{version}-%{release}
 %description -n %{_lib}%{name}-x11-in-qt6
 Shared object for Qt6 hosts displaying X11 LV2 GUIs
 
-%files -n %{_lib}%{name}-x11-in-qt5
+%files -n %{_lib}%{name}-x11-in-qt6
 %{_libdir}/%{name}-0/libsuil_x11_in_qt6.so
 
 #-----------------------------------

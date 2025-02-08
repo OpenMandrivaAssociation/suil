@@ -27,12 +27,12 @@ BuildRequires:  qt5-devel
 BuildRequires:  pkgconfig(lv2)
 BuildRequires:  pkgconfig(sratom-0)
 BuildRequires:  python3-devel
-BuildRequires:	pkgconfig(Qt5Core)
-BuildRequires:	pkgconfig(Qt5Gui)
-BuildRequires:	pkgconfig(Qt5Widgets)
-BuildRequires:	pkgconfig(Qt5X11Extras)
+BuildRequires:	pkgconfig(Qt6Core)
+BuildRequires:	pkgconfig(Qt6Gui)
+BuildRequires:	pkgconfig(Qt6Widgets)
+#BuildRequires:	pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:	qt5-qtbase-devel
+#BuildRequires:	qt5-qtbase-devel
 BuildRequires:  python3dist(sphinx)
 
 %description

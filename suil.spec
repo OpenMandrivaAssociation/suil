@@ -130,6 +130,19 @@ Shared object for gtk3 hosts displaying X11 LV2 GUIs
 %{_libdir}/%{name}-0/libsuil_x11_in_gtk3.so
 
 #-----------------------------------
+%package -n %{_lib}%{name}-x11-in-qt6
+Summary:	Shared object for Qt6 hosts displaying X11 LV2 GUIs
+Group:		System/Libraries
+Requires:	%{lib_name} = %{version}-%{release}
+Provides:	%{name}-x11-in-qt6 = %{version}-%{release}
+
+%description -n %{_lib}%{name}-x11-in-qt6
+Shared object for Qt6 hosts displaying X11 LV2 GUIs
+
+%files -n %{_lib}%{name}-x11-in-qt5
+%{_libdir}/%{name}-0/libsuil_x11_in_qt6.so
+
+#-----------------------------------
 
 %prep
 %setup -q

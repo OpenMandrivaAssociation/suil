@@ -1,7 +1,7 @@
 %global build_ldflags %{build_ldflags} -Wl,--undefined-version
 
 Name:           suil
-Version:        0.10.22
+Version:        0.10.24
 Release:        1
 Summary:        Lightweight C library for loading and wrapping LV2 plugin UIs
 
